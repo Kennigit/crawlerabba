@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title>The Hello World of News Search</title>
+    <script type="text/javascript">
+        //newsriver sBBqsGXiYgF0Db5OV5tAw-kO5dSp6ij2GbdFdASVCZlhdWKEIE2h1usPbaZn1j2xn2pHZrSf1gT2PUujH1YaQA
+        //youtube AIzaSyCd8BNh7InrGbv9KzRUuJEpxoGYeLJeFgU
+
+
+      var url = 'https://newsapi.org/v2/everything?' +
+          'q=Bob%20Lazar&' +
+          'from=2018-12-24&' +
+          'sortBy=popularity&' +
+          'apiKey=8c2df35677494d4985b00e59c23e5207';
+
+      var req = new Request(url);
+
+      fetch(req)
+      .then(function(response) {
+        console.log("OK!");
+        //console.log(response.json());
+        x = response.json();
+        console.log(x);
+
+      })
+
+      document.getElementById('content').innerHTML ;
+        if (response.articles && response.articles.length > 0) {
+          for (var i = 0; i < response.articles.length; i++) {
+
+            // Create HTML elements for search results
+            var p = document.createElement('p');
+            var a = document.createElement('a');
+
+            a.href = response.articles[i].url;
+            console.log(response.articles[i].url);
+
+            x = response.articles[i].title;
+            a.innerHTML = x.toString();
+
+            // Append search results to the HTML nodes
+            p.appendChild(a);
+            document.body.appendChild(p);
+          }
+        }
+
+
+    </script>
+  </head>
+  <body style="font-family: Arial;border: 0 none;">
+    <div id="branding"  style="float: left;"></div><br />
+    <div id="content"></div>
+  </body>
+</html>
